@@ -4,6 +4,9 @@ cmake_minimum_required(VERSION 3.3.1)
 #top level project
 project (training LANGUAGES CXX C)
 
+#Testing added
+enable_testing()
+
 # set the common output location
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
 set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
@@ -21,3 +24,5 @@ add_subdirectory (feeDll)
 add_subdirectory (dllstatic)
 add_subdirectory (dll)
 add_subdirectory (app)
+
+add_subdirectory(AppTest)
