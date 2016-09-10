@@ -3,6 +3,8 @@
 
 #include "stdafx.h"
 #include "../dll/dll.h"
+#include "../feeDll/feeDll.h"
+
 
 int main()
 {
@@ -10,6 +12,7 @@ int main()
 	ndll = ++n;
 	int s = fndll();
 	int t = Foo();
+	int w = Fee(t);
     return 0;
 }
 
