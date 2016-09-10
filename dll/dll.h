@@ -5,12 +5,18 @@
 // DLL_API functions as being imported from a DLL, whereas this DLL sees symbols
 // defined with this macro as being exported.
 #define EXTERNC extern "C"
-#ifdef DLL_EXPORTS
-#define DLL_API EXTERNC __declspec(dllexport)
-#define DLL_API_SYMBOL  __declspec(dllexport)
+
+#if __linux__
+	#define DLL_API EXTERNC
+	#define DLL_API_SYMBOL
 #else
-#define DLL_API EXTERNC __declspec(dllimport)
-#define DLL_API_SYMBOL  __declspec(dllimport)
+	#ifdef DLL_EXPORTS
+	#define DLL_API EXTERNC __declspec(dllexport)
+	#define DLL_API_SYMBOL  __declspec(dllexport)
+	#else
+	#define DLL_API EXTERNC __declspec(dllimport)
+	#define DLL_API_SYMBOL  __declspec(dllimport)
+	#endif
 #endif
 
 

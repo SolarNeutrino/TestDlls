@@ -1,16 +1,28 @@
 #dll CMakeLists.txt
 project(dllProject LANGUAGES CXX C )
 
+
 # basic shared lib
-add_library(dll SHARED
+set(SRC_COMMON 
 	dll.cpp
-	dllmain.cpp
 	stdafx.cpp
 	dll.h
 	stdafx.h
 	targetver.h
+	)
+
+if(MSVC)
+set(SRC_OS 
+	dllmain.cpp
 	#this is needed to export routines from dllStatic
 	Source.def
+	)
+else()
+endif()
+
+add_library(dll SHARED
+	${SRC_COMMON}
+	${SRC_OS}
 	)
 
 # Need dllStatic
